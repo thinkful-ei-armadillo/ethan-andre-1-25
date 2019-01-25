@@ -31,27 +31,34 @@ const render = function () {
   let html = '';
 
   state.results.forEach((s) => {
-    html += `<div>`;
+    html += `<li>`;
 
-    html += `<strong>${s.fullName}</strong>`;
+    html += `<h2>${s.fullName}</h2>`;
+    html += `<a href=""${s.url}>${s.url}</a>`;
     html += `<p>${s.description}</p>`;
 
+    html += '<ul>';
     s.addresses.forEach((a) => {
 
-      html += `<p>${a.line1}</p>`;
-      html += `<p>${a.line2}</p>`;
-      html += `<p>${a.line3}</p>`;
-      html += `<p>${a.city}</p>`;
-      html += `<p>${a.stateCode}</p>`;
-      html += `<p>${a.postalCode}</p>`;
-      html += `<p>${a.type}</p>`;
+      html += '<li>';
+      html += `<p><strong>${a.type} Address</strong></p>`;
 
+      html += '<p>';
+      html += `${a.line1}<br>`;
+
+      if (a.line2) { html += `${a.line2}<br>`; }
+      if (a.line3) { html += `${a.line3}<br>`; }
+
+      html += `${a.city}<br>`;
+      html += `${a.stateCode}<br>`;
+      html += `${a.postalCode}<br>`;
+      html += '</p>';
+      html += '</li>';
 
     });
+    html += '</ul>';
 
-    html += `<p><a href="${s.url}">${s.url}</a></p>`;
-
-    html+= `</div>`;
+    html+= `</li>`;
   });
 
   $('#results').html(html);
