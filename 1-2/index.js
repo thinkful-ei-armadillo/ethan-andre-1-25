@@ -9,7 +9,7 @@ const render = function () {
   let html = '';
 
   state.dogImageUris.forEach((uri) => {
-    html += `<li><img src="${uri}"></li>`;
+    html += `<img class="dog-image" src="${uri}">`;
   });
 
   $('#results').html(html);
